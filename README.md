@@ -2,7 +2,7 @@
 
 An interactive, lightweight web-based quiz arena built with vanilla HTML, CSS, and JavaScript. Designed for fast gameplay, clean styling, and easy question customization.
 
-Live Demo: [Add your GitHub Pages / Netlify / Vercel link here]
+Live Demo: https://sahuadarsh0016.github.io/TECH--NIGHT/
 
 📸 Preview
 
