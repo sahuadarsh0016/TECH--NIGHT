@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechKnight | Quiz Arena 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="brand">
+        <span class="brand-icon">⚔️</span>
+        <span class="brand-text">TECH<span class="accent">KNIGHT</span></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#rules">Rules</a>
+        <a href="#arena" class="nav-cta">Enter Arena</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="event-pill">
+        <span class="pulse-dot"></span>
+        <span>FLAGSHIP EVENT • QUIZ ARENA</span>
+      </div>
+      <h1 class="hero-title">TECH<span>KNIGHT</span></h1>
+      <p class="hero-sub">
+        One Battlefield. Pure Code & Logic. Step into the ultimate rapid-fire technical Quiz Arena and claim the Knight's crown.
+      </p>
+      <div class="hero-actions">
+        <a href="#arena" class="btn btn-primary">Launch Quiz Arena ⚡</a>
+        <a href="#rules" class="btn btn-ghost">Battle Rules</a>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-item">
+          <span class="stat-val">01</span>
+          <span class="stat-lbl">Main Event</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-val">15s</span>
+          <span class="stat-lbl">Per Question</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-val">2X</span>
+          <span class="stat-lbl">Streak Boost</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules Section -->
+  <section id="rules" class="section rules-section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">ARENA PROTOCOL</span>
+        <h2>How TechKnight Works</h2>
+      </div>
+      <div class="rules-grid">
+        <div class="rule-card">
+          <div class="rule-icon">⏱️</div>
+          <h3>Rapid Fire</h3>
+          <p>10 curated questions with 15 seconds on the clock. Speed yields bonus points.</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">🔥</div>
+          <h3>Streak Multiplier</h3>
+          <p>Chain consecutive right answers to ignite your combo multiplier up to 2x.</p>
+        </div>
+        <div class="rule-card">
+          <div class="rule-icon">🏆</div>
+          <h3>Instant Verdict</h3>
+          <p>Earn your official TechKnight rank immediately and review every solution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Arena Section -->
+  <section id="arena" class="section arena-section">
+    <div class="container">
+      <div class="arena-shell">
+        <div class="arena-topbar">
+          <div class="arena-badge">⚔️ TECHKNIGHT // QUIZ ARENA</div>
+          <div id="arena-status" class="arena-status">STANDBY</div>
+        </div>
+
+        <!-- Lobby Screen -->
+        <div id="screen-lobby" class="arena-body">
+          <h2>Prepare for Battle</h2>
+          <p class="muted">Enter your Knight handle and pick your combat track.</p>
+
+          <div class="form-group">
+            <label for="player-name">Knight Handle</label>
+            <input type="text" id="player-name" placeholder="e.g. CyberKnight_01" maxlength="20" />
+          </div>
+
+          <div class="track-grid" id="track-selector">
+            <button type="button" class="track-btn active" data-track="mixed">
+              <span class="t-icon">⚡</span>
+              <span class="t-name">Mixed Blitz</span>
+              <span class="t-desc">Web + Core CS</span>
+            </button>
+            <button type="button" class="track-btn" data-track="web">
+              <span class="t-icon">🌐</span>
+              <span class="t-name">Web Wizard</span>
+              <span class="t-desc">HTML, CSS & JS</span>
+            </button>
+            <button type="button" class="track-btn" data-track="cs">
+              <span class="t-icon">🧠</span>
+              <span class="t-name">Core CS</span>
+              <span class="t-desc">DSA, OS & Logic</span>
+            </button>
+          </div>
+
+          <button id="start-btn" class="btn btn-primary btn-full">Start Quiz Arena 🚀</button>
+        </div>
+
+        <!-- Active Quiz Screen -->
+        <div id="screen-quiz" class="arena-body hidden">
+          <div class="hud">
+            <div class="hud-pill">Q <span id="q-num">1</span>/10</div>
+            <div class="hud-pill streak">🔥 <span id="streak-val">0</span>x</div>
+            <div class="hud-pill score">💎 <span id="score-val">0</span></div>
+          </div>
+
+          <div class="timer-track">
+            <div id="timer-bar" class="timer-fill"></div>
+          </div>
+
+          <h3 id="question-text" class="question-text">Question loads here...</h3>
+          <div id="options-list" class="options-list"></div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="screen-result" class="arena-body hidden">
+          <div class="rank-emblem" id="rank-emoji">👑</div>
+          <div class="rank-tag" id="rank-title">GRAND TECHKNIGHT</div>
+          <h2 id="result-greeting">Well Fought, Knight!</h2>
+
+          <div class="result-stats">
+            <div class="r-box">
+              <span class="r-num" id="final-score">0</span>
+              <span class="r-lbl">Final Score</span>
+            </div>
+            <div class="r-box">
+              <span class="r-num" id="final-acc">0%</span>
+              <span class="r-lbl">Accuracy</span>
+            </div>
+            <div class="r-box">
+              <span class="r-num" id="final-streak">0</span>
+              <span class="r-lbl">Best Streak</span>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button id="retry-btn" class="btn btn-primary">Play Again 🔄</button>
+            <button id="share-btn" class="btn btn-ghost">Copy Rank Card 📋</button>
+          </div>
+
+          <div class="review-box">
+            <h4>Battle Log</h4>
+            <div id="review-list" class="review-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 <strong>TechKnight</strong> • Exclusive Quiz Arena</p>
+  </footer>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
