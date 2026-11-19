@@ -8,7 +8,7 @@ Live Demo: [Add your GitHub Pages / Netlify / Vercel link here]
 
 Add a screenshot or short screen recording of your quiz app here:
 
-![TechKnight Quiz Arena Preview](./assets/preview.png)
+![TechKnight Quiz Arena Preview](./assets/tech-night.png)
 
 ✨ Features
 
